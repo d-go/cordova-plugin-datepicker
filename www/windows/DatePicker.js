@@ -1,3 +1,4 @@
+cordova.define("cordova-plugin-datepicker.DatePicker", function(require, exports, module) {
 /**
 * Phonegap DatePicker Plugin Copyright (c) Greg Allen 2011 MIT Licensed
 * Reused and ported to Android plugin by Daniel van 't Oever
@@ -25,7 +26,7 @@ DatePicker.prototype.ANDROID_THEMES = {
 /**
 * show - true to show the ad, false to hide the ad
 */
-DatePicker.prototype.show = function(options, cb) {
+DatePicker.prototype.show = function (options, cb) {
 	if (options.date) {
 		options.date = (options.date.getMonth() + 1) + "/" +
 		(options.date.getDate()) + "/" +
@@ -38,7 +39,9 @@ DatePicker.prototype.show = function(options, cb) {
 		date : '',
 		minDate: 0,
 		maxDate: 0,
-		clearText: 'Clear'
+		clearText: 'Clear',
+		cancelText: '',
+		okText: ''
 	};
 	for (var key in defaults) {
 		if (typeof options[key] !== "undefined") {
@@ -77,3 +80,4 @@ if (!window.plugins) {
 if (!window.plugins.datePicker) {
 	window.plugins.datePicker = datePicker;
 }
+});
