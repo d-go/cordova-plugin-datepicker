@@ -1,3 +1,4 @@
+cordova.define("cordova-plugin-datepicker.DatePickerProxy", function(require, exports, module) {
 /*
  *
  * Licensed to the Apache Software Foundation (ASF) under one
@@ -190,7 +191,7 @@ module.exports = {
                         datePickerSelect.id = "winjsdatepickerYear";
                         descriptionElement.textContent = "year";
 
-                        for (var y=1970; y<=2050; y++) {
+                        for (var y=options.minDate.getFullYear(); y<=options.maxDate.getFullYear(); y++) {
                             var option = document.createElement("option");
                             option.textContent = y;
                             option.value = y;
@@ -311,7 +312,7 @@ module.exports = {
             overlayFooter.appendChild(rightCell);
 
             var cancelButton = document.createElement("button");
-            cancelButton.innerText = "Cancel";
+            cancelButton.innerText = options.cancelText;//"Cancel";
             cancelButton.style.cssText = buttonCSSText;
 
             cancelButton.addEventListener("click", function(){
@@ -323,7 +324,7 @@ module.exports = {
             rightCell.appendChild(cancelButton);
 
             var useButton = document.createElement("button");
-            useButton.innerText = "Use";
+            useButton.innerText = options.okText;//"Use";
             useButton.style.cssText = buttonCSSText;
 		
             useButton.addEventListener("click", function () {
@@ -337,7 +338,7 @@ module.exports = {
                 var dateTimeStr = "";
 
                 if (pickertype.indexOf("date") >= 0) {
-                    dateTimeStr = "" + (year.value <= 9 ? "0" + year.value : year.value) + "-" + (month.value <= 9 ? "0" + month.value : month.value) + "-" + (day.value <= 9 ? "0" + day.value : day.value);
+                    dateTimeStr = "" + (year.value <= 9 ? "0" + year.value : year.value) + "-" + (month.value <= 9 ? "0" + month.value : month.value) + "-" + (day.value <= 9 ? "0" + day.value : day.value) + "T00:00:00";
                 }
                 else {
                     dateTimeStr = "1970-01-01";
@@ -362,3 +363,5 @@ module.exports = {
 };
 
 require("cordova/exec/proxy").add("DatePickerPlugin",module.exports);
+
+});
