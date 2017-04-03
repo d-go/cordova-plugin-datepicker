@@ -1,4 +1,3 @@
-cordova.define("cordova-plugin-datepicker.DatePickerProxy", function(require, exports, module) {
 /*
  *
  * Licensed to the Apache Software Foundation (ASF) under one
@@ -363,5 +362,3 @@ module.exports = {
 };
 
 require("cordova/exec/proxy").add("DatePickerPlugin",module.exports);
-
-});
